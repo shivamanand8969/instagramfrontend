@@ -1,7 +1,9 @@
 import React from 'react';
-import { Box, TextField, InputAdornment, Typography } from '@mui/material';
+import { Box, TextField, InputAdornment, Typography, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsPopover from '../common/NotificationPopover';
+import { topRoute } from '../../routes/config';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -50,7 +52,16 @@ const Header = () => {
         />
       </Box> */}
       <Box flex="1 1 10%" textAlign="right">
-      <NotificationsPopover/>
+        {/* <NotificationsPopover /> */}
+        {
+          topRoute.map((value) => (
+            <Link to={value.path}>
+              <IconButton color="primary">
+                {value.icon}
+              </IconButton>
+            </Link>
+          ))
+        }
       </Box>
     </Box>
   );

@@ -11,48 +11,54 @@ import SearchPage from '../pages/search';
 import ChatPage from '../pages/chat/ChatPage';
 import RellsPage from '../pages/reels/RellsPage';
 import Notification from '../pages/notifications/Notification';
-export const appRoutes = [
+import UserProfilePage from '../pages/UserProfilePage';
+
+
+export const topRoute = [
+  {
+    title: 'Message',
+    path: 'message',
+    element: <ChatPage />,
+    icon: <MessageIcon />,
+  },
+  {
+    title: 'Notifications',
+    path: 'notification',
+    element: <Notification />,
+    icon: <CircleNotificationsIcon />,
+  },
+
+]
+
+export const bottomRoute=[
   {
     title: 'Home',
     path: '/',
-    element: <HomeScreen />, 
+    element: <HomeScreen />,
     icon: <Home />,
   },
   {
     title: 'Search',
     path: 'search',
-    element:< SearchPage />,
-    icon: <SearchIcon/>,
+    element: < SearchPage />,
+    icon: <SearchIcon />,
   },
-{
-  title: 'Message',
-    path: 'message',
-      element: <ChatPage/>,
-        icon: <MessageIcon />,
-  },
-{
-  title: 'Reels',
-    path: 'reels',
-      element:<RellsPage/>,
-        icon: <TheatersIcon />,
-  },
-{
-  title: 'Notifications',
-    path: 'notification',
-      element: <Notification/>,
-        icon: <CircleNotificationsIcon />,
-  },
-{
-  title: 'Create',
+  {
+    title: 'Create',
     path: 'create',
-      element: <div>this is plans</div>,
-        icon: <AddCircleOutlineIcon />,
+    element: <div>this is plans</div>,
+    icon: <AddCircleOutlineIcon />,
   },
-{
-  title: 'Profile',
+  {
+    title: 'Reels',
+    path: 'reels',
+    element: <RellsPage />,
+    icon: <TheatersIcon />,
+  },
+  {
+    title: 'Profile',
     path: 'profile',
-
-      element: <div>this is plans</div>,
-        icon: <AccountCircleIcon />,
-  }
-];
+    element: <UserProfilePage />,
+    icon: <AccountCircleIcon />,
+  }  
+]

@@ -9,7 +9,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { useLocation, Link } from 'react-router-dom';
 import Logo from '../../components/Logo';
-import { appRoutes } from '../../routes/config';
+import { appRoutes, bottomRoute, topRoute } from '../../routes/config';
 import SettingsIcon from '@mui/icons-material/Settings';
 
 const ResponsiveDrawer = (props) => {
@@ -38,7 +38,15 @@ const ResponsiveDrawer = (props) => {
       </div>
       <Divider />
       <List sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-around', paddingBlock: '20px' }}>
-        {appRoutes.map(({ title, path, icon }) => (
+        {bottomRoute.map(({ title, path, icon }) => (
+          <ListItem key={title}>
+            <ListItemButton component={Link} to={path} sx={{ borderRadius: '5px' }}>
+              <ListItemIcon>{icon}</ListItemIcon>
+              {location.pathname !== '/message' && <ListItemText primary={title} sx={{ fontSize: '1.5rem' }} />}
+            </ListItemButton>
+          </ListItem>
+        ))}
+        {topRoute.map(({ title, path, icon }) => (
           <ListItem key={title}>
             <ListItemButton component={Link} to={path} sx={{ borderRadius: '5px' }}>
               <ListItemIcon>{icon}</ListItemIcon>

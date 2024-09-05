@@ -8,7 +8,8 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import UnprotectedRoute from './routes/UnprotectedRoute';
 import PageNotFound from './pages/PageNotFound';
-import { appRoutes } from './routes/config';
+import {  bottomRoute, topRoute } from './routes/config';
+import UserProfilePage from './pages/UserProfilePage';
 
 function App() {
   const isMobile = useResponsive('down', 'sm');
@@ -29,11 +30,17 @@ function App() {
         <Route path='/register' element={<UnprotectedRoute><Register /></UnprotectedRoute>} />
         <Route path='/' element={<ProtectedRoute><HomeLayout /></ProtectedRoute>}>
          {
-          authInfo && appRoutes.map((value)=>(
+          authInfo && bottomRoute.map((value)=>(
+            <Route path={value?.path} element={value?.element}/>
+          ))
+         }
+         {
+          authInfo && topRoute.map((value)=>(
             <Route path={value?.path} element={value?.element}/>
           ))
          }
          <Route path="setting" element={<div>Settings..</div>}/>
+         <Route path="singleprofile" element={<UserProfilePage/>}/>
         </Route>
         <Route path="*" element={<PageNotFound/>} />
 
