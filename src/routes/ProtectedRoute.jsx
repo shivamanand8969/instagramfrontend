@@ -4,12 +4,11 @@ import { Navigate, useLocation } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
   const location = useLocation();
-//   const { authInfo } = useSelector((state) => state.auth);
-     const authInfo=true;
-
+  const { authInfo } = useSelector((state) => state.auth);
+  
   return (
     <>
-      {authInfo === null ? (
+      {!authInfo  ? (
         <Navigate to="/login" state={{ from: location }} replace />
       ) : (
         children

@@ -10,6 +10,11 @@ import UnprotectedRoute from './routes/UnprotectedRoute';
 import PageNotFound from './pages/PageNotFound';
 import {  bottomRoute, topRoute } from './routes/config';
 import UserProfilePage from './pages/UserProfilePage';
+import { useScrollToTop } from './hooks/user-scroll-to-top';
+import { useSelector } from 'react-redux';
+import MyProfile from './pages/MyProfile';
+import EditPage from './pages/edit/EditPage';
+import EditDetailsPage from './pages/edit/EditDetailsPage';
 
 function App() {
   const isMobile = useResponsive('down', 'sm');
@@ -20,8 +25,8 @@ function App() {
   console.log("isTablet", isTablet);
   console.log("IsLaptop", isLaptop);
   console.log("isDesktop", isDesktop);
-
-  let authInfo = true;
+  useScrollToTop();
+  const { authInfo } = useSelector(state => state.auth);
 
   return (
     <>
@@ -39,6 +44,10 @@ function App() {
             <Route path={value?.path} element={value?.element}/>
           ))
          }
+         <Route path="account/edit" element={<EditPage/>}>
+            
+              <Route index element={<EditDetailsPage/>}/>
+         </Route>
          <Route path="setting" element={<div>Settings..</div>}/>
          <Route path="singleprofile" element={<UserProfilePage/>}/>
         </Route>

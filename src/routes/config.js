@@ -12,6 +12,8 @@ import ChatPage from '../pages/chat/ChatPage';
 import RellsPage from '../pages/reels/RellsPage';
 import Notification from '../pages/notifications/Notification';
 import UserProfilePage from '../pages/UserProfilePage';
+import MyProfile from '../pages/MyProfile';
+import CreatePost from '../pages/CreatePost';
 
 
 export const topRoute = [
@@ -46,7 +48,7 @@ export const bottomRoute=[
   {
     title: 'Create',
     path: 'create',
-    element: <div>this is plans</div>,
+    element: <CreatePost/>,
     icon: <AddCircleOutlineIcon />,
   },
   {
@@ -56,9 +58,9 @@ export const bottomRoute=[
     icon: <TheatersIcon />,
   },
   {
-    title: 'Profile',
-    path: 'profile',
-    element: <UserProfilePage />,
+    title: 'My Profile',
+    path: 'myprofile',
+    element: <MyProfile />,
     icon: <AccountCircleIcon />,
   }  
 ]
